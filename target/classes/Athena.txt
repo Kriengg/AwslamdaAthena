@@ -1,0 +1,45 @@
+##### Table 1
+CREATE EXTERNAL TABLE IF NOT EXISTS `apubdatabase`.`Contact` (
+  `contact_id` int,
+  `first_name_pen` varchar(150),
+  `last_name_pen` varchar(500)
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+WITH SERDEPROPERTIES ('field.delim' = ',')
+STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat' OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION 's3://krishnssbucket33/contacts/'
+TBLPROPERTIES ('classification' = 'csv');
+
+###### Tbale 2
+CREATE EXTERNAL TABLE IF NOT EXISTS `apubdatabase`.`Contributor` (
+  `title_id` int,
+  `contact_id` int,
+  `contributor_sequence` int,
+  `contributor_role` varchar(100)
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+WITH SERDEPROPERTIES ('field.delim' = ',')
+STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat' OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION 's3://krishnssbucket33/contributors/'
+TBLPROPERTIES ('classification' = 'csv');
+
+##### Tbale 3
+CREATE EXTERNAL TABLE IF NOT EXISTS `apubdatabase`.`title` (
+  `title_id` int,
+  `title_name` varchar(500)
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+WITH SERDEPROPERTIES ('field.delim' = ',')
+STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat' OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION 's3://krishnssbucket33/titles/'
+TBLPROPERTIES ('classification' = 'csv');
+
+#####Select query
+select a.title_id,a.title_name,b.contact_id,b.first_name_pen,
+b.last_name_pen,
+c.contributor_sequence,
+c.contributor_role
+from title a,contact b,contributor c
+where a.title_id=c.title_id
+and b.contact_id=c.contact_id
+and a.title_id=5396
