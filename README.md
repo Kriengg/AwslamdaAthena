@@ -73,6 +73,10 @@ Map PAI key to our "test" stage
 i)Redeploy the API to stage to refeclt APY key changes
 ![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/2c1f5b4e-6fcc-491a-9d32-2d0eb6822599)
 
+h)To test using postman ..make sure to pass the API key under header x-api-key
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/d43d69af-b321-40ef-9605-121b265919a4)
+
+
 
 
 
