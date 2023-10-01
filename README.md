@@ -22,6 +22,9 @@ To use this Lambda function, you can invoke it using the AWS API Gateway. The ex
 
 Ensure that you have the necessary permissions set up for your Lambda function to access Athena and other required AWS services.
 
+Note:
+While testing main function locally ..make sure to set AWS key and ID in your env variables
+
 Dependencies
 This Lambda function uses the following libraries and AWS SDKs:
 
@@ -37,7 +40,7 @@ License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Author
-[Your Name]
+[Krishn]
 Feel free to modify and enhance this function to suit your specific requirements.
 
 For more information on AWS Lambda and Amazon Athena, refer to the AWS documentation:
