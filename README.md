@@ -20,6 +20,70 @@ To use this Lambda function, you can invoke it using the AWS API Gateway. The ex
   "titleid": "100"
 }
 
+Athena Tables:
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/88740a54-e6b3-4fd6-b35c-6dc69c320464)
+
+AWS Lamda was assigned this role:
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/27a6c569-c78f-46b9-bbdf-e26748eb0e7b)
+
+API Gateway Configuraitons:
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/b33ffe9a-02cd-479e-ab38-4e98d9abe44d)
+
+Request Body Changes
+a)Create a model
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/b5581bb4-aaf5-4b36-9685-968f88259425)
+b)Model Json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "titleid": {
+      "type": "string"
+    }
+  },
+  "required": ["titleid"]
+}
+
+c)Click on Method Request
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/25a4e71a-955e-49d8-960a-5a2f7c962457)
+
+d)Add model Under Request Body
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/ed2eb19c-cfe7-4e7f-b798-fd422d62691c)
+
+e)Deply this API into "test"stage
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/35ac7560-e95f-4ee4-92c6-e86c7eca6d59)
+
+f)![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/7f7d0ed7-c3e5-4fb5-8d5a-7d371d05b17b)
+
+
+
+e)Optional:To enable API key..Chnage it to True
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/029ea87e-326e-4ddd-94f8-f7e51c10264b)
+
+f)Create new API Key
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/e2bb523a-898c-4098-9d4e-cd9fbf140389)
+
+g)Create usage plan
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/993600c4-5f90-43ea-8082-18109252698d)
+
+h)Assign API key to this usage plan
+Map PAI key to our "test" stage
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/1ec44f91-038a-4fff-b4ea-f5df311dc43b)
+
+i)Redeploy the API to stage to refeclt APY key changes
+![image](https://github.com/Kriengg/AwslamdaAthena/assets/6264991/2c1f5b4e-6fcc-491a-9d32-2d0eb6822599)
+
+
+
+
+
+
+
+
+
+
+
+
 Ensure that you have the necessary permissions set up for your Lambda function to access Athena and other required AWS services.
 
 Note:
