@@ -1,5 +1,5 @@
 ##### Table 1
-CREATE EXTERNAL TABLE IF NOT EXISTS `apubdatabase`.`Contact` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `mydb`.`Contact` (
   `contact_id` int,
   `first_name_pen` varchar(150),
   `last_name_pen` varchar(500)
@@ -11,7 +11,7 @@ LOCATION 's3://krishnssbucket33/contacts/'
 TBLPROPERTIES ('classification' = 'csv');
 
 ###### Tbale 2
-CREATE EXTERNAL TABLE IF NOT EXISTS `apubdatabase`.`Contributor` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `mydb`.`Contributor` (
   `title_id` int,
   `contact_id` int,
   `contributor_sequence` int,
@@ -24,7 +24,7 @@ LOCATION 's3://krishnssbucket33/contributors/'
 TBLPROPERTIES ('classification' = 'csv');
 
 ##### Tbale 3
-CREATE EXTERNAL TABLE IF NOT EXISTS `apubdatabase`.`title` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `mydb`.`title` (
   `title_id` int,
   `title_name` varchar(500)
 )
