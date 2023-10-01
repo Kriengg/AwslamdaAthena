@@ -38,7 +38,7 @@ public class HelloWorldLambda implements RequestHandler<Request, Response> {
     public static void main (String args[]) {
     	
     	 try {
-			Response response = getTitle(5396);
+			Response response = getTitle(100);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -99,7 +99,7 @@ public class HelloWorldLambda implements RequestHandler<Request, Response> {
                 .build();
 
         
-     //   String query = "SELECT * FROM apubdatabase.title WHERE title_Id = " + titleId ;
+     //   String query = "SELECT * FROM mydb.title WHERE title_Id = " + titleId ;
         
         
         String query = "SELECT\n" +
@@ -111,11 +111,11 @@ public class HelloWorldLambda implements RequestHandler<Request, Response> {
                 "    c.contributor_sequence,\n" +
                 "    c.contributor_role\n" +
                 "FROM\n" +
-                "    apubdatabase.title a\n" +
+                "    mydb.title a\n" +
                 "INNER JOIN\n" +
-                "    apubdatabase.contributor c ON a.title_id = c.title_id\n" +
+                "    mydb.contributor c ON a.title_id = c.title_id\n" +
                 "INNER JOIN\n" +
-                "    apubdatabase.contact b ON b.contact_id = c.contact_id\n" +
+                "    mydb.contact b ON b.contact_id = c.contact_id\n" +
                 "WHERE\n" +
                 "    a.title_id ="+titleId;
 
@@ -123,7 +123,7 @@ public class HelloWorldLambda implements RequestHandler<Request, Response> {
         StartQueryExecutionRequest queryExecutionRequest = StartQueryExecutionRequest.builder()
                 .queryString(query)
                 .resultConfiguration(ResultConfiguration.builder()
-                        .outputLocation("s3://your-athena-output-bucket/")
+                        .outputLocation("s3://my-athena-output-bucket/") //TODO
                         .build())
                 .build();
 
